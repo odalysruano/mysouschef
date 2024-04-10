@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
-
 const SALT_ROUNDS = 6; // 6 is  reasonable value
+const ingredientSchema = require('./ingredient');
 
 const userSchema = new Schema({
     name: {type: String, required: true},
@@ -18,7 +18,8 @@ const userSchema = new Schema({
         trim: true,
         minLength: 3,
         required: true,
-    }
+    },
+    pantry: [ingredientSchema.schema],
 }, {
     timestamps: true,
     toJSON: {
