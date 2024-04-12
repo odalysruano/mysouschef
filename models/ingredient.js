@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const ingredientSchema = new Schema({
+    apiID: {
+        type: String, 
+        required: true
+    },
     name: {
         type: String, 
         required: true

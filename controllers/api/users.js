@@ -1,12 +1,15 @@
 const jwt = require('jsonwebtoken');
 const User = require('../../models/user');
+const Ingredient = require('../../models/ingredient');
 const bcrypt = require('bcrypt');
+
 
 module.exports = {
     create,
     login,
     checkToken,
     getPantry,
+    addToPantry,
 };
 
 async function create(req, res) {
@@ -51,6 +54,16 @@ async function getPantry(req, res) {
         console.log(err);
         res.status(500).json('Internal Service Error');
     }
+}
+
+async function addToPantry(req, res) {
+    const user = await User.findOne({ email: req.user.email });
+    const newIngredient = new Ingredient({
+        name: req.body.name,
+        apiID: req.body.id,
+    });
+    user.pantry.push(newIngredient);
+    await user.save();
 }
 
 /*-- Helper Functions --*/
