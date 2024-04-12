@@ -10,6 +10,7 @@ module.exports = {
     checkToken,
     getPantry,
     addToPantry,
+    removeFromPantry,
 };
 
 async function create(req, res) {
@@ -63,6 +64,13 @@ async function addToPantry(req, res) {
         apiID: req.body.id,
     });
     user.pantry.push(newIngredient);
+    await user.save();
+}
+
+async function removeFromPantry(req, res) {
+    const user = await User.findOne({ email: req.user.email });
+    const index = user.pantry.indexOf(req.body.ingredient);
+    user.pantry.splice(index, 1);
     await user.save();
 }
 

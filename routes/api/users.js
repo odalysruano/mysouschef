@@ -19,4 +19,7 @@ router.get('/pantry', usersCtrl.getPantry);
 // POST /api/users/pantry
 router.post('/pantry', usersCtrl.addToPantry);
 
+// DELETE /api/users/pantry
+router.delete('/pantry', usersCtrl.removeFromPantry);
+
 module.exports = router;
