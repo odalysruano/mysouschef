@@ -13,4 +13,7 @@ router.post('/login', usersCtrl.login);
 // GET /api/users/check-token
 router.get('/check-token', ensureLoggedIn, usersCtrl.checkToken);
 
+// GET /api/users/pantry
+router.get('/pantry', usersCtrl.getPantry);
+
 module.exports = router;
