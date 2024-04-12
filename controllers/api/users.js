@@ -6,6 +6,7 @@ module.exports = {
     create,
     login,
     checkToken,
+    getPantry,
 };
 
 async function create(req, res) {
@@ -40,6 +41,16 @@ function checkToken(req, res) {
     // req.user will always be there for you when a token is sent
     console.log('req.user', req.user);
     res.json(req.exp);
+}
+
+async function getPantry(req, res) {
+    try {
+        const user = await User.findOne({ email: req.user.email });
+        res.json(user.pantry);
+    }   catch (err) {
+        console.log(err);
+        res.status(500).json('Internal Service Error');
+    }
 }
 
 /*-- Helper Functions --*/
