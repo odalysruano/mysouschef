@@ -12,8 +12,8 @@ async function search(req, res) {
     const url = `${BASE_URL}/search?query=${req.params.query}`;
     try {
         const response = await fetch(url, fetchOptions);
-        const result = await response.text();
-        res.json(result.results)
+        const result = await response.json();
+        res.json(result.results);
     } catch (error) {
         console.error(error);
         res.status(500).json('Internal Server Error');
