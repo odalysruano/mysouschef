@@ -17,6 +17,12 @@ export default function AddToPantry() {
         setUserPantry(pantry)
     }
 
+    async function removeIngredient(ingredient) {
+        await UserAPI.removeFromPantry(ingredient.name, ingredient.id.toString())
+        const pantry = await UserAPI.getPantry()
+        setUserPantry(pantry)
+    }
+
     return(
         <>
             <h1>Here is an ingredient</h1>
@@ -27,6 +33,7 @@ export default function AddToPantry() {
                     currentIngredients={userPantry}
                     ingredient={ingredient}
                     key={ingredient.id}
+                    removeIngredient={removeIngredient}
                     showButton={true}
                 />
             ))}
