@@ -14,12 +14,12 @@ router.post('/login', usersCtrl.login);
 router.get('/check-token', ensureLoggedIn, usersCtrl.checkToken);
 
 // GET /api/users/pantry
-router.get('/pantry', usersCtrl.getPantry);
+router.get('/pantry', ensureLoggedIn, usersCtrl.getPantry);
 
 // POST /api/users/pantry
-router.post('/pantry', usersCtrl.addToPantry);
+router.post('/pantry', ensureLoggedIn, usersCtrl.addToPantry);
 
 // DELETE /api/users/pantry
-router.delete('/pantry', usersCtrl.removeFromPantry);
+router.delete('/pantry', ensureLoggedIn, usersCtrl.removeFromPantry);
 
 module.exports = router;

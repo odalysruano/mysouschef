@@ -58,13 +58,19 @@ async function getPantry(req, res) {
 }
 
 async function addToPantry(req, res) {
-    const user = await User.findOne({ email: req.user.email });
-    const newIngredient = new Ingredient({
-        name: req.body.name,
-        apiID: req.body.id,
-    });
-    user.pantry.push(newIngredient);
-    await user.save();
+    try {
+        const user = await User.findOne({ email: req.user.email });
+        const newIngredient = new Ingredient({
+            name: req.body.name,
+            apiID: req.body.id,
+        });
+        user.pantry.push(newIngredient);
+        await user.save();
+        res.status(200).json("OK");
+    } catch (err) {
+        console.log(err)
+        res.status(500).json('Internal Service Error');
+    }
 }
 
 async function removeFromPantry(req, res) {
