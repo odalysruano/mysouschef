@@ -64,9 +64,19 @@ async function addToPantry(req, res) {
             name: req.body.name,
             apiID: req.body.id,
         });
-        user.pantry.push(newIngredient);
-        await user.save();
-        res.status(200).json("OK");
+        const existsInPantry = user.pantry.filter(ingredient => {
+            if (newIngredient.name === ingredient.name && newIngredient.apiID === ingredient.apiID) {
+                return true
+            } 
+            return false
+        }).length > 0;
+        if (existsInPantry) {
+            res.status(409).json('Ingredient is Already in Pantry');
+        } else {
+            user.pantry.push(newIngredient);
+            await user.save();
+            res.status(200).json("OK");
+        }
     } catch (err) {
         console.log(err)
         res.status(500).json('Internal Service Error');
