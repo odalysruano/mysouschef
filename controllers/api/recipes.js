@@ -3,6 +3,7 @@ const Recipe = require('../../models/recipe');
 
 module.exports = {
     addRecipe,
+    showRecipes,
 }
 
 async function addRecipe(req, res) {
@@ -17,6 +18,16 @@ async function addRecipe(req, res) {
         });
         await newRecipe.save();
         res.status(200).json("OK");
+    }   catch (error) {
+        console.error(error);
+        res.status(500).json('Internal Server Error');
+    }
+}
+
+async function showRecipes(req, res) {
+    try {
+        const recipes = await Recipe.find({});
+        res.json(recipes);
     }   catch (error) {
         console.error(error);
         res.status(500).json('Internal Server Error');
