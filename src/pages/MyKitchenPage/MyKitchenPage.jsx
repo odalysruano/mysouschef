@@ -1,12 +1,16 @@
 import { useEffect, useState } from 'react';
 import * as UserAPI from '../../utilities/users-api';
+import * as RecipeAPI from '../../utilities/recipes-api';
 import MyPantry from '../../components/MyPantry/MyPantry';
+import AllRecipes from '../../components/AllRecipes/AllRecipes';
 
 export default function MyKitchenPage() {
     const [userPantry, setUserPantry] = useState([]);
+    const [allRecipes, setAllRecipes] = useState([]);
     
     useEffect(function() {
         UserAPI.getPantry().then(pantry => setUserPantry(pantry));
+        RecipeAPI.showRecipes().then(recipes => setAllRecipes(recipes));
     }, []);
 
     async function removeIngredient(ingredient) {
@@ -15,9 +19,16 @@ export default function MyKitchenPage() {
         setUserPantry(pantry)
     }
 
+    async function removeRecipe(recipeID) {
+        await RecipeAPI.removeRecipe(recipeID);
+        const recipe = await RecipeAPI.showRecipes();
+        setAllRecipes(recipe);
+    }
+
     return (
         <>
             <h1>My Kitchen Page</h1>
+            <AllRecipes allRecipes={allRecipes} removeRecipe={removeRecipe} />
             <MyPantry userPantry={userPantry} removeIngredient={removeIngredient} />
         </>
     )
