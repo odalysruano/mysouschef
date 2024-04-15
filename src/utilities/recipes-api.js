@@ -13,3 +13,7 @@ export function addRecipe(recipe) {
 export function showRecipes() {
     return sendRequest(`${BASE_URL}`, 'GET');
 }
+
+export function removeRecipe(recipeID) {
+    return sendRequest(`${BASE_URL}/${recipeID}`, 'DELETE');
+}
