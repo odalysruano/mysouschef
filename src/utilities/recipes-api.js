@@ -9,3 +9,7 @@ export function addRecipe(recipe) {
         instructions: recipe.instructions,
     });
 }
+
+export function showRecipes() {
+    return sendRequest(`${BASE_URL}`, 'GET');
+}
