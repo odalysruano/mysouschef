@@ -10,7 +10,7 @@ export default function MyKitchenPage() {
     }, []);
 
     async function removeIngredient(ingredient) {
-        await UserAPI.removeFromPantry(ingredient.name, ingredient.id.toString())
+        await UserAPI.removeFromPantry(ingredient.name, ingredient.apiID);
         const pantry = await UserAPI.getPantry()
         setUserPantry(pantry)
     }
