@@ -1,4 +1,4 @@
-import RecipeCard from '../../components/RecipeCard/RecipeCard';
+import RecipeCard from '../RecipeCard/RecipeCard';
 
 export default function AllRecipes({allRecipes, removeRecipe}) {
     return (

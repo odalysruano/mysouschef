@@ -1,4 +1,4 @@
-import IngredientCard from '../../components/IngredientCard/IngredientCard';
+import IngredientCard from '../IngredientCard/IngredientCard';
 
 export default function MyPantry({userPantry, removeIngredient}) {
     
