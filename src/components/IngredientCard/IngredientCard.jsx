@@ -1,3 +1,10 @@
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+import Container from '@mui/material/Container';
+
 export default function IngredientCard(props) {
     // props should include:
     //      ingredient - an object with keys' ID and name
@@ -21,16 +28,19 @@ export default function IngredientCard(props) {
     };
 
     return (
-        <>  
-            <h1>Ingredient Card</h1>
-            <h2>{props.ingredient.name}</h2>
-            {props.showButton ?
-                <button onClick={handleClick}>
-                    {isInIngredientList ? 'Remove' : 'Add'}
-                </button>
-                : 
-                <></>
-            }
-        </>
+        <div style={{ padding:10 }}>
+            <Card>  
+                <CardContent>
+                    <h2>{props.ingredient.name}</h2>
+                    {props.showButton ?
+                        <Button variant='contained' size='small' onClick={handleClick}>
+                            {isInIngredientList ? 'Remove' : 'Add'}
+                        </Button>
+                        : 
+                        <></>
+                    }
+                </CardContent>
+            </Card>
+        </div>
     );
 }
