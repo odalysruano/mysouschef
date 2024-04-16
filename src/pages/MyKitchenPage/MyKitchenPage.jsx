@@ -3,6 +3,7 @@ import * as UserAPI from '../../utilities/users-api';
 import * as RecipeAPI from '../../utilities/recipes-api';
 import MyPantry from '../../components/MyPantry/MyPantry';
 import AllRecipes from '../../components/AllRecipes/AllRecipes';
+import RecipeIngredientMatching from '../../components/RecipeIngredientMatching/RecipeIngredientMatching';
 
 export default function MyKitchenPage() {
     const [userPantry, setUserPantry] = useState([]);
@@ -30,6 +31,7 @@ export default function MyKitchenPage() {
             <h1>My Kitchen Page</h1>
             <AllRecipes allRecipes={allRecipes} removeRecipe={removeRecipe} />
             <MyPantry userPantry={userPantry} removeIngredient={removeIngredient} />
+            <RecipeIngredientMatching allRecipes={allRecipes} userPantry={userPantry} />
         </>
     )
 }
