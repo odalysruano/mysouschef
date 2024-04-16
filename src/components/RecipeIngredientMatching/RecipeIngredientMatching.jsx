@@ -1,3 +1,5 @@
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
 import RecipeCard from '../RecipeCard/RecipeCard';
 
 export default function RecipeIngredientMatching({allRecipes, userPantry}) {
@@ -9,14 +11,16 @@ export default function RecipeIngredientMatching({allRecipes, userPantry}) {
     });
 
     return (
-        <>
-            <h1>Recipes I Can Make Today</h1>
-            {filteredRecipes.map((recipe) => (
-                <RecipeCard
-                    recipe={recipe}
-                    key={recipe._id}
-                />
-            ))}
-        </>
+        <Card>
+            <CardContent style={{ backgroundColor: '#dff9ba' }}>
+                <h1>Ready to Cook!</h1>
+                {filteredRecipes.map((recipe) => (
+                    <RecipeCard
+                        recipe={recipe}
+                        key={recipe._id}
+                    />
+                ))}
+            </CardContent>
+        </Card>
     )
 }

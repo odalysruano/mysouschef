@@ -17,7 +17,7 @@ export default function NavBar({ user, setUser }) {
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
                 <Toolbar>
-                    <Button color="primary" variant="contained"> Welcome, { user.name } </Button>
+                    <Button color="primary" variant="contained"> Welcome, Chef { user.name } </Button>
                     &nbsp; &nbsp;
                     <Button color="secondary" variant="contained" href="/" component={Link}>My Kitchen</Button>
                     &nbsp; &nbsp;

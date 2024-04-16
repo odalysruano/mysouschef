@@ -1,3 +1,7 @@
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+
 export default function RecipeCard(props) {
     // props should include:
     //      recipe - an object with keys' ID and name
@@ -10,10 +14,13 @@ export default function RecipeCard(props) {
     };
 
     return (
-        <>  
-            <h1>Recipe Card</h1>
-            <h2>{props.recipe.name}</h2>
-            <button onClick={handleClick}>{'See Details'}</button>
-        </>
+        <div style={{ padding:10 }}>
+            <Card>
+                <CardContent style={{ color: 'white' }} >
+                    <h2>{props.recipe.name}</h2>
+                    <Button variant='contained' size='small' onClick={handleClick}>{'See Details'}</Button>
+                </CardContent>
+            </Card>
+        </div>
     );
 }

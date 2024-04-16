@@ -3,7 +3,10 @@ import IngredientCard from '../../components/IngredientCard/IngredientCard';
 import IngredientsSearchBar from '../../components/IngredientsSearchBar/IngredientsSearchBar';
 import * as RecipeAPI from '../../utilities/recipes-api';
 import Grid from '@mui/material/Grid';
+import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
 
 export default function AddToAllRecipes() {
     const [searchResults, setSearchResults] = useState([]);
@@ -38,32 +41,45 @@ export default function AddToAllRecipes() {
         <Container>
             <Grid container>
                 <Grid item xs={12} md={12}>
-                    <h1>Add a New Recipe</h1>
+                    <Typography variant="h3">
+                        Add a New Recipe
+                    </Typography>
                 </Grid>
                 <Grid container xs={12} md={6}>
                     <Grid item xs={12} md={12}>
-                        <input 
-                            type="text"
+                        <TextField 
+                            id="outlined-basic" 
+                            label="Recipe Name" 
+                            variant="outlined"
+                            fullWidth
+                            margin='normal'
                             name="name"
-                            placeholder="Recipe Name" 
                             value={recipe.name}
                             onChange={handleRecipeUpdate}
                         />
                     </Grid>
                     <Grid item xs={12} md={12}>
-                        <input 
-                            type="text"
+                        <TextField
+                            id="outlined-basic"
+                            label="# of Servings"
+                            variant="outlined"
+                            fullWidth
+                            margin='normal'
                             name="servings"
-                            placeholder="# of Servings" 
                             value={recipe.servings}
                             onChange={handleRecipeUpdate}
                         />
                     </Grid>
                     <Grid item xs={12} md={12}>
-                        <input 
-                            type="text"
+                        <TextField 
+                            id="outlined-multiline-flexible"
+                            label="Instructions"
+                            variant="outlined"
+                            fullWidth
+                            margin='normal'
+                            multiline
+                            rows={10}
                             name="instructions"
-                            placeholder="Instructions" 
                             value={recipe.instructions}
                             onChange={handleRecipeUpdate}
                         />
@@ -80,7 +96,9 @@ export default function AddToAllRecipes() {
                     ))}
                     <br></br>
                     <Grid item xs={12} md={12}>
-                        <button onClick={addRecipe}>Save Recipe</button>
+                        <Button variant='contained' size='small' onClick={addRecipe}>
+                            Save Recipe
+                        </Button>
                     </Grid>
                 </Grid>
                 <Grid container xs={12} md={6}>

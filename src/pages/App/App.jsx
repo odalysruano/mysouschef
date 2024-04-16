@@ -14,21 +14,25 @@ export const theme = createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: '#ff2424',
-      light: '#ff8484',
-      dark: '#9a1414',
+      main: '#006241',
     },
     secondary: {
-      main: '#262641',
+      main: '#dff9ba',
     },
     background: {
-      default: "#FFFFF0",
-      paper: "#66b2b2",
+      default: "#d4e9e2",
+      paper: "#1e3932",
     },
     text: {
       primary: '#000000',
-    }
+    },
   },
+  typography: {
+    h3: {
+      color: '#1e3932',
+      fontWeight: 'bold',
+    },
+  }
 });
 
 export default function App() {

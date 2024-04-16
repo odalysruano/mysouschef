@@ -27,7 +27,7 @@ export default function IngredientCard(props) {
     return (
         <div style={{ padding:10 }}>
             <Card>  
-                <CardContent>
+                <CardContent style={{ color: 'white' }}>
                     <h2>{props.ingredient.name}</h2>
                     {props.showButton ?
                         <Button variant='contained' size='small' onClick={handleClick}>

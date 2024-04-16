@@ -6,6 +6,7 @@ import AllRecipes from '../../components/AllRecipes/AllRecipes';
 import RecipeIngredientMatching from '../../components/RecipeIngredientMatching/RecipeIngredientMatching';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
 
 export default function MyKitchenPage() {
     const [userPantry, setUserPantry] = useState([]);
@@ -31,7 +32,9 @@ export default function MyKitchenPage() {
     return (
         <Container>
             <Grid container>
-                <Grid item xs={12} md={12}><h1>My Kitchen</h1></Grid>
+                <Grid item xs={12} md={12}>
+                    <Typography variant="h3">My Kitchen</Typography>
+                </Grid>
                 <Grid item xs={12} md={4}>
                     <AllRecipes allRecipes={allRecipes} removeRecipe={removeRecipe} />
                 </Grid>

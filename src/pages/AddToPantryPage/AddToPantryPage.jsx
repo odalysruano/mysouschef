@@ -4,6 +4,7 @@ import IngredientsSearchBar from '../../components/IngredientsSearchBar/Ingredie
 import * as UserAPI from '../../utilities/users-api';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
 
 export default function AddToPantry() {
     const [searchResults, setSearchResults] = useState([]);
@@ -29,7 +30,7 @@ export default function AddToPantry() {
         <Container>
             <Grid container>
                 <Grid item xs={12} md={12}>
-                    <h1>Add Ingredients to My Pantry</h1>
+                    <Typography variant="h3">Add Ingredients to My Pantry</Typography>
                 </Grid>
                 <Grid item xs={12} md={12}>
                     <IngredientsSearchBar setSearchResults={setSearchResults} />
