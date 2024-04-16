@@ -1,4 +1,8 @@
-import { Link } from 'react-router-dom';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Link from '@mui/material/Link';
+import Toolbar from '@mui/material/Toolbar';
+import Button from '@mui/material/Button';
 import * as userService from '../../utilities/users-service';
 
 export default function NavBar({ user, setUser }) {
@@ -10,15 +14,21 @@ export default function NavBar({ user, setUser }) {
     }
     
     return (
-        <nav>
-            <Link to="/">My Kitchen</Link>
-            &nbsp; | &nbsp;
-            <Link to="/addIngredient">Add Ingredients</Link>
-            &nbsp; | &nbsp;
-            <Link to="/addRecipe">Add Recipe</Link>
-            &nbsp; | &nbsp;
-            <span> Welcome, { user.name } </span>
-            &nbsp;&nbsp;<Link to="" onClick={ handleLogOut }>Log Out</Link>
-        </nav>
+        <Box sx={{ flexGrow: 1 }}>
+            <AppBar position="static">
+                <Toolbar>
+                    <Button color="primary" variant="contained"> Welcome, { user.name } </Button>
+                    &nbsp; &nbsp;
+                    <Button color="secondary" variant="contained" href="/" component={Link}>My Kitchen</Button>
+                    &nbsp; &nbsp;
+                    <Button color="secondary" variant="contained" href="/addIngredient" component={Link}>Add Ingredients</Button>
+                    &nbsp; &nbsp;
+                    <Button color="secondary" variant="contained" href="/addRecipe" component={Link}>Add Recipe</Button>
+                    &nbsp; &nbsp;
+                    <Button color="secondary" variant="contained" href="" onClick={ handleLogOut } component={Link}>Log Out</Button>
+                    <Link to="" onClick={ handleLogOut }>Log Out</Link>
+                </Toolbar>
+            </AppBar>
+        </Box>
     )
 }

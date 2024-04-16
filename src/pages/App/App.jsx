@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import CssBaseline from "@mui/material/CssBaseline";
 import './App.css';
 import AuthPage from '../AuthPage/AuthPage';
 import AddToPantryPage from '../AddToPantryPage/AddToPantryPage';
@@ -20,6 +21,13 @@ export const theme = createTheme({
     secondary: {
       main: '#262641',
     },
+    background: {
+      default: "#FFFFF0",
+      paper: "#66b2b2",
+    },
+    text: {
+      primary: '#000000',
+    }
   },
 });
 
@@ -28,6 +36,7 @@ export default function App() {
   
   return (
     <ThemeProvider theme={theme}>
+      <CssBaseline />
       <main className="App">
         { user ?
           <>
