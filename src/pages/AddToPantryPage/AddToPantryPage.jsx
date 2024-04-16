@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import IngredientCard from '../../components/IngredientCard/IngredientCard';
 import IngredientsSearchBar from '../../components/IngredientsSearchBar/IngredientsSearchBar';
 import * as UserAPI from '../../utilities/users-api';
+import Grid from '@mui/material/Grid';
+import Container from '@mui/material/Container';
 
 export default function AddToPantry() {
     const [searchResults, setSearchResults] = useState([]);
@@ -24,19 +26,27 @@ export default function AddToPantry() {
     }
 
     return(
-        <>
-            <h1>Here is an ingredient</h1>
-            <IngredientsSearchBar setSearchResults={setSearchResults} />
-            {searchResults.map((ingredient) => (
-                <IngredientCard
-                    addIngredient={addIngredient}
-                    currentIngredients={userPantry}
-                    ingredient={ingredient}
-                    key={ingredient.id}
-                    removeIngredient={removeIngredient}
-                    showButton={true}
-                />
-            ))}
-        </>
+        <Container>
+            <Grid container>
+                <Grid item xs={12} md={12}>
+                    <h1>Add Ingredients to My Pantry</h1>
+                </Grid>
+                <Grid item xs={12} md={12}>
+                    <IngredientsSearchBar setSearchResults={setSearchResults} />
+                </Grid>
+                {searchResults.map((ingredient) => (
+                    <Grid item xs={12} md={3}>
+                        <IngredientCard
+                            addIngredient={addIngredient}
+                            currentIngredients={userPantry}
+                            ingredient={ingredient}
+                            key={ingredient.id}
+                            removeIngredient={removeIngredient}
+                            showButton={true}
+                        />
+                    </Grid>
+                ))}
+            </Grid>
+        </Container>
     );
 }
