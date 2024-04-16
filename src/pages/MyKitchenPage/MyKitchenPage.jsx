@@ -4,6 +4,8 @@ import * as RecipeAPI from '../../utilities/recipes-api';
 import MyPantry from '../../components/MyPantry/MyPantry';
 import AllRecipes from '../../components/AllRecipes/AllRecipes';
 import RecipeIngredientMatching from '../../components/RecipeIngredientMatching/RecipeIngredientMatching';
+import Grid from '@mui/material/Grid';
+import Container from '@mui/material/Container';
 
 export default function MyKitchenPage() {
     const [userPantry, setUserPantry] = useState([]);
@@ -27,11 +29,19 @@ export default function MyKitchenPage() {
     }
 
     return (
-        <>
-            <h1>My Kitchen Page</h1>
-            <AllRecipes allRecipes={allRecipes} removeRecipe={removeRecipe} />
-            <MyPantry userPantry={userPantry} removeIngredient={removeIngredient} />
-            <RecipeIngredientMatching allRecipes={allRecipes} userPantry={userPantry} />
-        </>
+        <Container>
+            <Grid container>
+                <Grid item xs={12} md={12}><h1>My Kitchen</h1></Grid>
+                <Grid item xs={12} md={4}>
+                    <AllRecipes allRecipes={allRecipes} removeRecipe={removeRecipe} />
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <MyPantry userPantry={userPantry} removeIngredient={removeIngredient} />
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <RecipeIngredientMatching allRecipes={allRecipes} userPantry={userPantry} />
+                </Grid>
+            </Grid>
+        </Container>
     )
 }
