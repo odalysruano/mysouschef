@@ -4,6 +4,7 @@ import { getUser } from '../../utilities/users-service';
 import './App.css';
 import AuthPage from '../AuthPage/AuthPage';
 import AddToPantryPage from '../AddToPantryPage/AddToPantryPage';
+import AddMyOwnRecipePage from '../AddMyOwnRecipePage/AddMyOwnRecipePage';
 import MyKitchenPage from '../MyKitchenPage/MyKitchenPage';
 import NavBar from '../../components/NavBar/NavBar';
 
@@ -19,6 +20,7 @@ export default function App() {
             <Routes>
               <Route path="/" element={<MyKitchenPage />} />
               <Route path="/addIngredient" element={<AddToPantryPage />} />
+              <Route path="/addRecipe" element={<AddMyOwnRecipePage />} />
             </Routes>
           </>
           :

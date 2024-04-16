@@ -1,3 +1,4 @@
+const Ingredient = require('../../models/ingredient');
 const User = require('../../models/user');
 const Recipe = require('../../models/recipe');
 
@@ -10,10 +11,16 @@ module.exports = {
 async function addRecipe(req, res) {
     try {
         const user = await User.findOne({ email: req.user.email });
+        const ingredients = req.body.ingredients.map(ingredient => {
+            return new Ingredient({
+                name: ingredient.name,
+                apiID: ingredient.id,
+            });
+        });
         const newRecipe = new Recipe({
             name: req.body.name,
             servings: req.body.servings,
-            ingredients: req.body.ingredients,
+            ingredients: ingredients,
             instructions: req.body.instructions,
             author: user._id,
         });
