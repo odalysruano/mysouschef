@@ -29,6 +29,9 @@ export const theme = createTheme({
     },
   },
   typography: {
+    fontFamily: [
+      'Cabin',
+    ].join(','),
     h3: {
       color: '#1e3932',
       fontWeight: 'bold',

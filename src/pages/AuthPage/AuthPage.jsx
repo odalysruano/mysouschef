@@ -5,6 +5,7 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import LoginForm from "../../components/LoginForm/LoginForm";
 import SignUpForm from "../../components/SignUpForm/SignUpForm";
+import logoImg from '../../static/Logo.png';
 
 export default function AuthPage({ setUser }) {
     const [showLogin, setShowLogin] = useState(true);
@@ -21,6 +22,9 @@ export default function AuthPage({ setUser }) {
                         : 
                         <SignUpForm setUser={setUser} />
                     }
+                </Grid>
+                <Grid item xs={12} md={12}>
+                    <img style={{width: 300, borderRadius: '20%'}} src={logoImg} alt="MySousChefLogo" />
                 </Grid>
                 <Grid item xs={12} md={12}>
                     <Button variant='contained' size='small' onClick={() => setShowLogin(!showLogin)}>

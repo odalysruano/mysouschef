@@ -5,6 +5,7 @@ import * as UserAPI from '../../utilities/users-api';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
+import ingredientImg from '../../static/MySousChef.png';
 
 export default function AddToPantry() {
     const [searchResults, setSearchResults] = useState([]);
@@ -28,9 +29,12 @@ export default function AddToPantry() {
 
     return(
         <Container>
-            <Grid container>
+            <Grid container rowSpacing={4}>
                 <Grid item xs={12} md={12}>
                     <Typography variant="h3">Add Ingredients to My Pantry</Typography>
+                </Grid>
+                <Grid item xs={12} md={12}>
+                    <img style={{width: 300, borderRadius: '20%'}} src={ingredientImg} alt="Chef Juggling Ingredients" />
                 </Grid>
                 <Grid item xs={12} md={12}>
                     <IngredientsSearchBar setSearchResults={setSearchResults} />
