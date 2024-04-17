@@ -31,7 +31,7 @@ export default function MyKitchenPage() {
 
     return (
         <Container>
-            <Grid container>
+            <Grid container columnSpacing={5} rowSpacing={5}>
                 <Grid item xs={12} md={12}>
                     <Typography variant="h3">My Kitchen</Typography>
                 </Grid>

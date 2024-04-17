@@ -45,6 +45,7 @@ export default function App() {
         { user ?
           <>
             <NavBar user={ user } setUser={ setUser } />
+            <br></br>
             <Routes>
               <Route path="/" element={<MyKitchenPage />} />
               <Route path="/addIngredient" element={<AddToPantryPage />} />
