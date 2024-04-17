@@ -53,68 +53,47 @@ export default function AddToAllRecipes() {
                         Add a New Recipe
                     </Typography>
                 </Grid>
-                <Grid container xs={12} md={6}>
-                    <Grid item xs={12} md={12}>
-                        <TextField 
-                            id="outlined-basic" 
-                            label="Recipe Name" 
-                            variant="outlined"
-                            fullWidth
-                            margin='normal'
-                            name="name"
-                            value={recipe.name}
-                            onChange={handleRecipeUpdate}
-                        />
-                    </Grid>
-                    <Grid item xs={12} md={12}>
-                        <TextField
-                            id="outlined-basic"
-                            label="# of Servings"
-                            variant="outlined"
-                            fullWidth
-                            margin='normal'
-                            name="servings"
-                            value={recipe.servings}
-                            onChange={handleRecipeUpdate}
-                        />
-                    </Grid>
-                    <Grid item xs={12} md={12}>
-                        <TextField 
-                            id="outlined-multiline-flexible"
-                            label="Instructions"
-                            variant="outlined"
-                            fullWidth
-                            margin='normal'
-                            multiline
-                            rows={10}
-                            name="instructions"
-                            value={recipe.instructions}
-                            onChange={handleRecipeUpdate}
-                        />
-                    </Grid>
-                    {recipe.ingredients.map((ingredient) => (
-                        <IngredientCard
-                            addIngredient={addIngredient}
-                            currentIngredients={recipe.ingredients}
-                            ingredient={ingredient}
-                            key={ingredient.id}
-                            removeIngredient={removeIngredient}
-                            showButton={true}
-                        />
-                    ))}
-                    <br></br>
-                    <Grid item xs={12} md={12}>
-                        <Button variant='contained' size='small' onClick={addRecipe}>
-                            Save Recipe
-                        </Button>
-                    </Grid>
-                </Grid>
-                <Grid container xs={12} md={6}>
-                    <Grid item xs={12} md={12}>
-                        <IngredientsSearchBar setSearchResults={setSearchResults} />
-                    </Grid>
-                    {searchResults.map((ingredient) => (
+                <Grid item xs={12} md={6}>
+                    <Grid container >
                         <Grid item xs={12} md={12}>
+                            <TextField 
+                                id="outlined-basic" 
+                                label="Recipe Name" 
+                                variant="outlined"
+                                fullWidth
+                                margin='normal'
+                                name="name"
+                                value={recipe.name}
+                                onChange={handleRecipeUpdate}
+                            />
+                        </Grid>
+                        <Grid item xs={12} md={12}>
+                            <TextField
+                                id="outlined-basic"
+                                label="# of Servings"
+                                variant="outlined"
+                                fullWidth
+                                margin='normal'
+                                name="servings"
+                                value={recipe.servings}
+                                onChange={handleRecipeUpdate}
+                            />
+                        </Grid>
+                        <Grid item xs={12} md={12}>
+                            <TextField 
+                                id="outlined-multiline-flexible"
+                                label="Instructions"
+                                variant="outlined"
+                                fullWidth
+                                margin='normal'
+                                multiline
+                                rows={10}
+                                name="instructions"
+                                value={recipe.instructions}
+                                onChange={handleRecipeUpdate}
+                            />
+                        </Grid>
+                        {recipe.ingredients.map((ingredient) => (
                             <IngredientCard
                                 addIngredient={addIngredient}
                                 currentIngredients={recipe.ingredients}
@@ -123,9 +102,34 @@ export default function AddToAllRecipes() {
                                 removeIngredient={removeIngredient}
                                 showButton={true}
                             />
+                        ))}
+                        <br></br>
+                        <Grid item xs={12} md={12}>
+                            <Button variant='contained' size='small' onClick={addRecipe}>
+                                Save Recipe
+                            </Button>
                         </Grid>
-                    ))}
-                </Grid> 
+                    </Grid>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                    <Grid container>
+                        <Grid item xs={12} md={12}>
+                            <IngredientsSearchBar setSearchResults={setSearchResults} />
+                        </Grid>
+                        {searchResults.map((ingredient) => (
+                            <Grid item xs={12} md={6}>
+                                <IngredientCard
+                                    addIngredient={addIngredient}
+                                    currentIngredients={recipe.ingredients}
+                                    ingredient={ingredient}
+                                    key={ingredient.id}
+                                    removeIngredient={removeIngredient}
+                                    showButton={true}
+                                />
+                            </Grid>
+                        ))}
+                    </Grid> 
+                </Grid>
             </Grid> 
         </Container>
     );
