@@ -1,4 +1,9 @@
 import { useState } from 'react';
+import Alert from '@mui/material/Alert';
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+import Container from '@mui/material/Container';
+import TextField from '@mui/material/TextField';
 import * as usersService from '../../utilities/users-service';
 
 export default function LoginForm({ setUser }) {
@@ -28,17 +33,42 @@ export default function LoginForm({ setUser }) {
     }
 
     return (
-        <div>
-            <div className="form-container">
-                <form autoComplete="off" onSubmit={handleSubmit}>
-                    <label>Email</label>
-                    <input type="text" name="email" value={credentials.email} onChange={handleChange} required />
-                    <label>Password</label>
-                    <input type="password" name="password" value={credentials.password} onChange={handleChange} required />
-                    <button type="submit">LOG IN</button>
-                </form>
-            </div>
-            <p className="error-message">&nbsp;{error}</p>
-        </div>
+        <Container>
+            <Grid container>
+                <Grid item xs={12} md={12}>
+                    <TextField
+                        autoComplete='off'
+                        id='outlined-basic'
+                        label='Email'
+                        variant='outlined'
+                        fullWidth
+                        margin='normal'
+                        name='email'
+                        value={credentials.email}
+                        onChange={handleChange}
+                        required
+                    />
+                    <TextField
+                        autoComplete='off'
+                        id='outlined-basic'
+                        label='Password'
+                        type='password'
+                        variant='outlined'
+                        fullWidth
+                        margin='normal'
+                        name='password'
+                        value={credentials.password}
+                        onChange={handleChange}
+                        required
+                    />
+                    <Button variant='contained' size='large' onClick={handleSubmit} type='submit'>LOG IN</Button>
+                    {error !== '' ?
+                        <Alert severity="error" variant="outlined">{error}</Alert>
+                        :
+                        <></>
+                    }
+                </Grid>
+            </Grid>
+        </Container>
     );
 }
