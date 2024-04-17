@@ -2,7 +2,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import RecipeCard from '../RecipeCard/RecipeCard';
 
-export default function AllRecipes({allRecipes, removeRecipe}) {
+export default function AllRecipes({allRecipes}) {
     return (
         <Card>
             <CardContent style={{ backgroundColor: '#dff9ba' }}>

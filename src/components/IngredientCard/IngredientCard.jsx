@@ -9,7 +9,7 @@ export default function IngredientCard(props) {
     //      currentIngredients - an array of ingredient objects
     //      addIngredient - a function that will handle adding the ingredient to a list (recipe or pantry)
     //      removeIngredient - a function that will handle removing the ingredient to a list (recipe or pantry)
-    const isInIngredientList = props.currentIngredients.filter(currentIngredient => {
+    const isInIngredientList = props.showButton && props.currentIngredients.filter(currentIngredient => {
         if (props.ingredient.name === currentIngredient.name) {
             return true
         } 

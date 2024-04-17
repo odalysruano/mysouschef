@@ -23,12 +23,6 @@ export default function MyKitchenPage() {
         setUserPantry(pantry)
     }
 
-    async function removeRecipe(recipeID) {
-        await RecipeAPI.removeRecipe(recipeID);
-        const recipe = await RecipeAPI.showRecipes();
-        setAllRecipes(recipe);
-    }
-
     return (
         <Container>
             <Grid container columnSpacing={5} rowSpacing={5}>
@@ -36,7 +30,7 @@ export default function MyKitchenPage() {
                     <Typography variant="h3">My Kitchen</Typography>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <AllRecipes allRecipes={allRecipes} removeRecipe={removeRecipe} />
+                    <AllRecipes allRecipes={allRecipes} />
                 </Grid>
                 <Grid item xs={12} md={4}>
                     <MyPantry userPantry={userPantry} removeIngredient={removeIngredient} />

@@ -9,6 +9,7 @@ import AddToPantryPage from '../AddToPantryPage/AddToPantryPage';
 import AddMyOwnRecipePage from '../AddMyOwnRecipePage/AddMyOwnRecipePage';
 import MyKitchenPage from '../MyKitchenPage/MyKitchenPage';
 import NavBar from '../../components/NavBar/NavBar';
+import RecipeDetailPage from '../RecipeDetailsPage/RecipeDetailsPage';
 
 export const theme = createTheme({
   palette: {
@@ -50,6 +51,7 @@ export default function App() {
               <Route path="/" element={<MyKitchenPage />} />
               <Route path="/addIngredient" element={<AddToPantryPage />} />
               <Route path="/addRecipe" element={<AddMyOwnRecipePage />} />
+              <Route path="/recipe/:id" element={<RecipeDetailPage />} />
             </Routes>
           </>
           :

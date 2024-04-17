@@ -17,3 +17,7 @@ export function showRecipes() {
 export function removeRecipe(recipeID) {
     return sendRequest(`${BASE_URL}/${recipeID}`, 'DELETE');
 }
+
+export function getRecipe(recipeID) {
+    return sendRequest(`${BASE_URL}/${recipeID}`, 'GET');
+}
