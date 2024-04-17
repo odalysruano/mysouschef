@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import IngredientCard from '../../components/IngredientCard/IngredientCard';
 import IngredientsSearchBar from '../../components/IngredientsSearchBar/IngredientsSearchBar';
 import * as RecipeAPI from '../../utilities/recipes-api';
@@ -16,9 +17,16 @@ export default function AddToAllRecipes() {
         instructions: '',
         ingredients: [],
     });
+    const [shouldRedirect, setShouldRedirect] = useState(false);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (shouldRedirect) navigate("/");
+    }, [shouldRedirect, navigate]);
 
     async function addRecipe() {
         await RecipeAPI.addRecipe(recipe);
+        setShouldRedirect(true);
     }
 
     function addIngredient(ingredient) {
