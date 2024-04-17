@@ -49,7 +49,11 @@ export default function RecipeDetails() {
                         ))}
                 </h2>
                 <h2>Instructions: {recipe.instructions}</h2>
-                <Button variant='contained' size='small' onClick={removeRecipe}>Delete Recipe</Button>
+                {recipe.ownedByUser ?
+                    <Button variant='contained' size='small' onClick={removeRecipe}>Delete Recipe</Button>
+                    :
+                    <></>
+                }
             </CardContent>
         </Card>
     )

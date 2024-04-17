@@ -49,7 +49,7 @@ async function getRecipe(req, res) {
         const user = await User.findOne({ email: req.user.email });
         res.json({
             ...recipe, 
-            ownedByUser: user._id === recipe.author,
+            ownedByUser: user._id.toString() === recipe.author.toString(),
         });
     }   catch (error) {
         console.error(error);
