@@ -5,6 +5,7 @@ const Recipe = require('../../models/recipe');
 module.exports = {
     addRecipe,
     showRecipes,
+    getRecipe,
     removeRecipe,
 }
 
@@ -36,6 +37,20 @@ async function showRecipes(req, res) {
     try {
         const recipes = await Recipe.find({});
         res.json(recipes);
+    }   catch (error) {
+        console.error(error);
+        res.status(500).json('Internal Server Error');
+    }
+}
+
+async function getRecipe(req, res) {
+    try {
+        const recipe = await Recipe.findById(req.params.id).lean();
+        const user = await User.findOne({ email: req.user.email });
+        res.json({
+            ...recipe, 
+            ownedByUser: user._id === recipe.author,
+        });
     }   catch (error) {
         console.error(error);
         res.status(500).json('Internal Server Error');

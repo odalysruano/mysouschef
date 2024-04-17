@@ -10,6 +10,9 @@ router.post('/', ensureLoggedIn, recipesCtrl.addRecipe);
 // GET /api/recipes
 router.get('/', ensureLoggedIn, recipesCtrl.showRecipes);
 
+// GET /api/recipes
+router.get('/:id', ensureLoggedIn, recipesCtrl.getRecipe);
+
 // DELETE /api/recipes
 router.delete('/:id', ensureLoggedIn, recipesCtrl.removeRecipe);
 
