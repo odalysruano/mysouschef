@@ -1,6 +1,7 @@
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
+import Grow from '@mui/material/Grow';
 
 export default function IngredientCard(props) {
     // props should include:
@@ -26,18 +27,20 @@ export default function IngredientCard(props) {
 
     return (
         <div style={{ padding:10 }}>
-            <Card>  
-                <CardContent style={{ color: 'white' }}>
-                    <h2>{props.ingredient.name}</h2>
-                    {props.showButton ?
-                        <Button variant='contained' size='small' onClick={handleClick}>
-                            {isInIngredientList ? 'Remove' : 'Add'}
-                        </Button>
-                        : 
-                        <></>
-                    }
-                </CardContent>
-            </Card>
+            <Grow in={true}>
+                <Card>  
+                    <CardContent style={{ color: 'white' }}>
+                        <h2>{props.ingredient.name}</h2>
+                        {props.showButton ?
+                            <Button variant='contained' size='small' onClick={handleClick}>
+                                {isInIngredientList ? 'Remove' : 'Add'}
+                            </Button>
+                            : 
+                            <></>
+                        }
+                    </CardContent>
+                </Card>
+            </Grow>
         </div>
     );
 }
