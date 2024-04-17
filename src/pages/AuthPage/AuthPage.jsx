@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
@@ -9,6 +10,11 @@ import logoImg from '../../static/Logo.png';
 
 export default function AuthPage({ setUser }) {
     const [showLogin, setShowLogin] = useState(true);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        navigate("/");
+    }, []);
 
     return (
         <Container>
