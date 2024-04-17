@@ -38,6 +38,7 @@ export default function RecipeDetails() {
             <CardContent style={{ backgroundColor: '#dff9ba', textAlign: 'left' }}>
                 <h1>{recipe.name}</h1>
                 <h2>Servings: {recipe.servings}</h2>
+                <h2>Instructions: {recipe.instructions}</h2>
                 <h2>
                     Ingredients:
                     {recipe.ingredients.map((ingredient) => (
@@ -48,7 +49,6 @@ export default function RecipeDetails() {
                             />
                         ))}
                 </h2>
-                <h2>Instructions: {recipe.instructions}</h2>
                 {recipe.ownedByUser ?
                     <Button variant='contained' size='small' onClick={removeRecipe}>Delete Recipe</Button>
                     :
