@@ -4,10 +4,13 @@ phases:
   install:
     runtime-versions:
       node.js: latest
+  pre-build:
+    commands:
+      - echo pre-build running npm install
+      - npm install
   build:
     commands:
       - echo build phase
-      - npm install
       - npm run build
   post-build:
     commands:
