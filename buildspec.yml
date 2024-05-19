@@ -3,7 +3,7 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      node.js: latest
+      nodejs: latest
     commands:
       - echo pre-build running npm install
       - npm install
