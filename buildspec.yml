@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      node.js: latest
+  build:
+    commands:
+      - echo build phase
+      - npm install
+      - npm run build
+  post-build:
+    commands:
+      - echo post-build phase
+      - echo Build completed on `date`
+      - echo Artifacts copied to S3
+
+artifacts:
+  files:
+    - '**/*'
+    name: mysouschef
