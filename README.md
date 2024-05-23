@@ -29,9 +29,13 @@ Recipe Card:
 - Express
 - React
 - Node
+- AWS CodeBuild
+- AWS CodePipeline
+- AWS EC2
+- AWS Elastic Beanstalk
 
 ## Getting Started
-Link to App: 
+Link to App: http://prod.eba-zjpd9z52.us-east-1.elasticbeanstalk.com/
 
 Trello Board: https://trello.com/b/4zstiktR/mysouschef-project-4
 
