@@ -1,1 +1,1 @@
-web: rm -r node_modules && npm install && npm start
+web: rm -r node_modules && npm install && node server.js
