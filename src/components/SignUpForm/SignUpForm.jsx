@@ -9,6 +9,7 @@ import { signUp } from '../../utilities/users-service';
 export default class SignUpForm extends Component {
     state = {
         name: '',
+        username: '',
         email: '',
         password: '',
         confirm: '',
@@ -58,6 +59,18 @@ export default class SignUpForm extends Component {
                             margin='normal'
                             name='name'
                             value={this.state.name}
+                            onChange={this.handleChange}
+                            required
+                        />
+                        <TextField
+                            autoComplete='off'
+                            id='outlined-basic'
+                            label='Username'
+                            variant='outlined'
+                            fullWidth
+                            margin='normal'
+                            name='username'
+                            value={this.state.username}
                             onChange={this.handleChange}
                             required
                         />

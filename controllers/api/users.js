@@ -23,6 +23,7 @@ async function create(req, res) {
         // The client code needs to take this into consideration
         res.json(token);
     }   catch (err) {
+        console.log(err);
         // Client will check for non-200 status code
         // 400 = Bad Request
         res.status(400).json(err);
