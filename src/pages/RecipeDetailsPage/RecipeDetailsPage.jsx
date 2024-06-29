@@ -9,6 +9,7 @@ import IngredientCard from '../../components/IngredientCard/IngredientCard';
 export default function RecipeDetails() {
     const [recipe, setRecipe] = useState({
         _id: '',
+        authorUsername:'',
         name: '',
         servings: '',
         instructions: '',
@@ -49,6 +50,7 @@ export default function RecipeDetails() {
                             />
                         ))}
                 </h2>
+                <h3>Created by: {recipe.authorUsername}</h3>
                 {recipe.ownedByUser ?
                     <Button variant='contained' size='small' onClick={removeRecipe}>Delete Recipe</Button>
                     :

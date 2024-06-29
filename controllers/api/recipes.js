@@ -36,7 +36,14 @@ async function addRecipe(req, res) {
 async function showRecipes(req, res) {
     try {
         const recipes = await Recipe.find({});
-        res.json(recipes);
+        const updatedRecipes = await Promise.all(recipes.map(async recipe => {
+            const author = await User.findById(recipe.author);
+            return {
+                ...recipe._doc,
+                authorUsername: author.username ? author.username : author.name,
+            }
+        }));
+        res.json(updatedRecipes);
     }   catch (error) {
         console.error(error);
         res.status(500).json('Internal Server Error');
@@ -47,8 +54,10 @@ async function getRecipe(req, res) {
     try {
         const recipe = await Recipe.findById(req.params.id).lean();
         const user = await User.findOne({ email: req.user.email });
+        const author = await User.findById(recipe.author);
         res.json({
-            ...recipe, 
+            ...recipe,
+            authorUsername: author.username ? author.username : author.name,
             ownedByUser: user._id.toString() === recipe.author.toString(),
         });
     }   catch (error) {

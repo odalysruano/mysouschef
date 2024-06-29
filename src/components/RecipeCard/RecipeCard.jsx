@@ -15,6 +15,7 @@ export default function RecipeCard(props) {
                     <CardContent style={{ color: 'white' }} >
                         <h2>{props.recipe.name}</h2>
                         <Button variant='contained' size='small' component={Link} to={`/recipe/${props.recipe._id}`}>{'See Details'}</Button>
+                        <p>Created by: {props.recipe.authorUsername}</p>
                     </CardContent>
                 </Card>
             </Grow>
