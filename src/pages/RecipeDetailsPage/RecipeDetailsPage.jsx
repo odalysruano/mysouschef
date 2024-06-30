@@ -15,6 +15,8 @@ export default function RecipeDetails() {
         instructions: '',
         ingredients: [],
         ownedByUser: false,
+        createdAt: '',
+        updatedAt: '',
     });
     const [shouldRedirect, setShouldRedirect] = useState(false);
     const navigate = useNavigate();
@@ -34,6 +36,45 @@ export default function RecipeDetails() {
         setShouldRedirect(true);
     }
 
+    // Function to format ISO date to locale date string
+    const formatDate = (isoDate) => {
+        return new Date(isoDate).toLocaleDateString('en-US');
+    }
+
+    const formatLastUpdated = (isoDate) => {
+        const currentDate = new Date();
+        const isoAsDate = new Date(isoDate);
+        const diff = currentDate - isoAsDate;
+        if (diff > (1000 * 60 * 60 * 24 * 365)) {
+            return 'over a year ago';
+        } else if (diff > (1000 * 60 * 60 * 24 * 60)) {
+            const months = Math.floor(diff / (1000 * 60 * 60 * 24 * 30));
+            return `${months} months ago`;
+        } else if (diff > (1000 * 60 * 60 * 24 * 30)) {
+            return 'a month ago';
+        } else if (diff > (1000 * 60 * 60 * 24 * 2)) {
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            return `${days} days ago`;
+        } else if (diff > (1000 * 60 * 60 * 24)) {
+            return 'a day ago';
+        } else if (diff > (1000 * 60 * 60 * 2)) {
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            return `${hours} hours ago`;
+        } else if (diff > (1000 * 60 * 60)) {
+            return 'an hour ago';
+        } else if (diff > (1000 * 60 * 2)) {
+            const minutes = Math.floor(diff / (1000 * 60));
+            return `${minutes} minutes ago`;
+        } else if (diff > (1000 * 60)) {
+            return 'a minute ago';
+        } else if (diff > (1000 * 2)) {
+            const seconds = Math.floor(diff / 1000);
+            return `${seconds} seconds ago`;
+        } else {
+            return 'just now';
+        }
+    }
+
     return (
         <Card>
             <CardContent style={{ backgroundColor: '#dff9ba', textAlign: 'left' }}>
@@ -51,6 +92,8 @@ export default function RecipeDetails() {
                         ))}
                 </h2>
                 <h3>Created by: {recipe.authorUsername}</h3>
+                <h4>Created on: {formatDate(recipe.createdAt)}</h4>
+                <h4>Last updated: {formatLastUpdated(recipe.updatedAt)}</h4>
                 {recipe.ownedByUser ?
                     <Button variant='contained' size='small' onClick={removeRecipe}>Delete Recipe</Button>
                     :
