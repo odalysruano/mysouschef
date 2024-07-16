@@ -4,6 +4,7 @@ const Recipe = require('../../models/recipe');
 
 module.exports = {
     addRecipe,
+    editRecipe,
     showRecipes,
     getRecipe,
     removeRecipe,
@@ -27,6 +28,39 @@ async function addRecipe(req, res) {
         });
         await newRecipe.save();
         res.status(200).json("OK");
+    }   catch (error) {
+        console.error(error);
+        res.status(500).json('Internal Server Error');
+    }
+}
+
+async function editRecipe(req, res) {
+    try {
+        const recipeId = req.params.id;
+        const user = await User.findOne({ email: req.user.email });
+        
+        const recipe = await Recipe.findById(recipeId);
+        if (!recipe) {
+            return res.status(404).json({ error: 'Recipe not found' });
+        }
+        if (recipe.author.toString() !== user._id.toString()) {
+            return res.status(403).json({ error: 'Unauthorized' });
+        }
+
+        const ingredients = req.body.ingredients.map(ingredient => {
+            return new Ingredient({
+                name: ingredient.name,
+                apiID: ingredient.apiID,
+            });
+        });
+
+        recipe.name = req.body.name;
+        recipe.servings = req.body.servings;
+        recipe.ingredients = ingredients;
+        recipe.instructions = req.body.instructions;
+
+        await recipe.save();
+        res.status(200).json('OK')
     }   catch (error) {
         console.error(error);
         res.status(500).json('Internal Server Error');

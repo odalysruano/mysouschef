@@ -10,6 +10,10 @@ export function addRecipe(recipe) {
     });
 }
 
+export function editRecipe(recipe) {
+    return sendRequest(`${BASE_URL}/${recipe._id}`, 'PUT', recipe);
+}
+
 export function showRecipes() {
     return sendRequest(`${BASE_URL}`, 'GET');
 }

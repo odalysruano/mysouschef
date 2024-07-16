@@ -3,7 +3,6 @@ const User = require('../../models/user');
 const Ingredient = require('../../models/ingredient');
 const bcrypt = require('bcrypt');
 
-
 module.exports = {
     create,
     login,
@@ -11,7 +10,7 @@ module.exports = {
     getPantry,
     addToPantry,
     removeFromPantry,
-};
+}
 
 async function create(req, res) {
     try {

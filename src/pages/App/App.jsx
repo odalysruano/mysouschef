@@ -7,6 +7,7 @@ import './App.css';
 import AuthPage from '../AuthPage/AuthPage';
 import AddToPantryPage from '../AddToPantryPage/AddToPantryPage';
 import AddMyOwnRecipePage from '../AddMyOwnRecipePage/AddMyOwnRecipePage';
+import EditRecipePage from '../EditRecipePage/EditRecipePage';
 import MyKitchenPage from '../MyKitchenPage/MyKitchenPage';
 import NavBar from '../../components/NavBar/NavBar';
 import RecipeDetailPage from '../RecipeDetailsPage/RecipeDetailsPage';
@@ -54,6 +55,7 @@ export default function App() {
               <Route path="/" element={<MyKitchenPage />} />
               <Route path="/addIngredient" element={<AddToPantryPage />} />
               <Route path="/addRecipe" element={<AddMyOwnRecipePage />} />
+              <Route path="/editRecipe/:id" element={<EditRecipePage />} />
               <Route path="/recipe/:id" element={<RecipeDetailPage />} />
             </Routes>
           </>

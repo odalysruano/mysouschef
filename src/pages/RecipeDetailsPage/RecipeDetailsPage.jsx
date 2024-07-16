@@ -31,6 +31,10 @@ export default function RecipeDetails() {
         if (shouldRedirect) navigate("/");
     }, [shouldRedirect, navigate]);
 
+    async function redirectEditRecipe() {
+        navigate(`/editRecipe/${params.id}`);
+    }
+
     async function removeRecipe() {
         await RecipeAPI.removeRecipe(params.id);
         setShouldRedirect(true);
@@ -94,11 +98,16 @@ export default function RecipeDetails() {
                 <h3>Created by: {recipe.authorUsername}</h3>
                 <h4>Created on: {formatDate(recipe.createdAt)}</h4>
                 <h4>Last updated: {formatLastUpdated(recipe.updatedAt)}</h4>
-                {recipe.ownedByUser ?
-                    <Button variant='contained' size='small' onClick={removeRecipe}>Delete Recipe</Button>
-                    :
-                    <></>
-                }
+                {recipe.ownedByUser &&
+                <>
+                    <div>
+                        <Button variant='contained' size='small' onClick={redirectEditRecipe}>Edit Recipe</Button>
+                    </div>
+                    <br></br>
+                    <div>
+                        <Button variant='contained' size='small' onClick={removeRecipe}>Delete Recipe</Button>
+                    </div>
+                </>}
             </CardContent>
         </Card>
     )

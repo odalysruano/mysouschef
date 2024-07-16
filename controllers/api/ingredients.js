@@ -1,6 +1,10 @@
 const BASE_URL = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/ingredients";
 const rapidAPIKey = process.env.RAPID_API_KEY;
 
+module.exports = {
+    search,
+}
+
 async function search(req, res) {
     const fetchOptions = {
         method: 'GET',
@@ -19,7 +23,3 @@ async function search(req, res) {
         res.status(500).json('Internal Server Error');
     }
 }
-
-module.exports = {
-    search,
-};
